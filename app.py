@@ -6,7 +6,7 @@ from PIL import ImageTk
 from pytube import YouTube
 
 
-app = ttk.Window(title="YTGet v. 0.1", themename="superhero", iconphoto ='ai32.png', size=(1000, 800))
+app = ttk.Window(title="YTGet v. 0.1", themename="superhero", iconphoto ='yt32.png', size=(1000, 800))
 app.place_window_center()
 
 colors = app.style.colors
@@ -15,9 +15,13 @@ img1 = ImageTk.PhotoImage(file="info_2_32.png")
 img2 = ImageTk.PhotoImage(file="trash_1_32.png")
 
 
-def get_video(url):
+def get_video():
+
+    url = ytlink.get()
+
     if len(url) > 0:
         st1.insert(END, '\nPobieram ...\n')
+        app.update()
         try:
             yt = YouTube(url)
             stream = yt.streams.get_highest_resolution()
@@ -42,9 +46,10 @@ def about():
 
 container1 = ttk.Frame()
 container1.pack(fill=X, expand=YES, pady=5)
-question_entry = ttk.Entry(master=container1)
+ytlink = ttk.StringVar()
+question_entry = ttk.Entry(master=container1, textvariable=ytlink)
 question_entry.pack(side=LEFT, pady=5, expand=YES, fill=BOTH)
-ask_button = ttk.Button(master=container1, text="Download", bootstyle=SUCCESS, command=ask_question)
+ask_button = ttk.Button(master=container1, text="Download", bootstyle=SUCCESS, command=get_video)
 ask_button.pack(side=LEFT,pady=5, padx=5)
 clear_button = ttk.Button(master=container1, image=img2, command=clear_notes)
 clear_button.pack(side=LEFT,pady=5, padx=5)

@@ -3,6 +3,7 @@
 
 ## Technologia
 * Python 3.11.1
+* pytube 12.1.2
 * tkkBootstrap 1.10.1
 * Pillow==9.4.0
 * pyinstaller==5.8.0
