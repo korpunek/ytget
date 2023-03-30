@@ -1,0 +1,1 @@
+pyinstaller app.py --onefile --windowed --icon=ytget.ico --name YTGet --clean
